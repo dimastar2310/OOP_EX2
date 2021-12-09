@@ -6,13 +6,14 @@ import java.util.List;
 
 public class _DirectedWeighedGraphAlgorithms implements DirectedWeightedGraphAlgorithms {
 
-    DirectedWeightedGraph g;
+    _DirectedWeightedGraph g;
     public _DirectedWeighedGraphAlgorithms(){
         g = new _DirectedWeightedGraph();
     }
     @Override
+    //inits graph here
     public void init(DirectedWeightedGraph g) {
-        this.g = g;
+        this.g = (_DirectedWeightedGraph) g;
 
     }
 
@@ -22,8 +23,11 @@ public class _DirectedWeighedGraphAlgorithms implements DirectedWeightedGraphAlg
     }
     //need to do copy constructor
     @Override
+    /**computes deep copy of this graph**/
+
     public DirectedWeightedGraph copy() {
-        return null;
+        _DirectedWeightedGraph g1 = new _DirectedWeightedGraph(this.g);
+        return g1;
     }
 
     @Override
