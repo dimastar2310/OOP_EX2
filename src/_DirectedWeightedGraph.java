@@ -22,7 +22,7 @@ public class _DirectedWeightedGraph implements DirectedWeightedGraph {
        public  ArrayList<EdgeData> SpecificEd1;
          //public Collection<NodeData> vals;
 
-    private static int ModeCaunt;
+    protected static int ModeCaunt;
     private static int NC; //nodes caunt we have static method too doesnt metter
     private static int EC; //edge caunt
     private Iterator<EdgeData> p ;
@@ -39,11 +39,20 @@ public class _DirectedWeightedGraph implements DirectedWeightedGraph {
      ED = new ArrayList<EdgeData>(); //ED of specifice id
      SpecificEd = new HashMap<>();
      SpecificEd1 = new ArrayList<>();
-     p = SpecificEd1.iterator();
+     //p = SpecificEd1.iterator();
 
 
-
-
+    }
+    public  _DirectedWeightedGraph(_DirectedWeightedGraph o){
+        this.ModeCaunt=o.getMC();
+        this.NC = o.ND.size();
+        this.EC = o.ED.size();
+        this.e = o.e;
+        this.g = o.g;
+        this.ItHelper1 = o.ItHelper1;
+        this.ED = o.ED; //ED of specifice id
+        this.SpecificEd = o.SpecificEd;
+        this.SpecificEd1 = o.SpecificEd1;
 
 
     }
@@ -73,7 +82,8 @@ public class _DirectedWeightedGraph implements DirectedWeightedGraph {
        g.put(n.getKey(),n);
 
 
-
+        NC++;
+        ModeCaunt++;
         ND.add(n);
        //we need to represent neigbers in some way
 
@@ -151,6 +161,7 @@ public class _DirectedWeightedGraph implements DirectedWeightedGraph {
     public NodeData removeNode(int key) {
         NodeData r = getNode(key);
         g.remove(key);
+        ModeCaunt++;
         e.get(key).clear();
         //Iterator<EdgeData> e = getEdge(ke
         return r;
@@ -161,6 +172,7 @@ public class _DirectedWeightedGraph implements DirectedWeightedGraph {
     public EdgeData removeEdge(int src, int dest) {
         EdgeData edge = e.get(src).get(dest);
         e.get(src).remove(dest);
+        ModeCaunt++;
         return edge;
     }
 
